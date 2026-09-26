@@ -2,9 +2,10 @@
 <html lang="he" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>GuitApp</title>
-<!-- הכתובת האמיתית של האפליקציה. אם היא תשתנה - מעדכנים רק כאן (3 מקומות: meta refresh, TARGET, הקישור) -->
+<!-- הכתובת האמיתית של האפליקציה. אם היא תשתנה - מעדכנים רק כאן (4 מקומות: preconnect, meta refresh, TARGET, הקישור) -->
+<link rel="preconnect" href="https://guitapp.tail41ed80.ts.net">
 <meta http-equiv="refresh" content="0; url=https://guitapp.tail41ed80.ts.net/">
 <meta name="robots" content="noindex, nofollow">
 <meta name="description" content="Que la guita no se te escape.">
@@ -12,24 +13,45 @@
 <meta property="og:description" content="Que la guita no se te escape.">
 <meta property="og:image" content="https://oshermelijovich2-ops.github.io/icon.png">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#0f8f5c">
+<meta name="theme-color" content="#f2f7f4">
 <link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
 <style>
-  :root{--bg:#f2f7f4;--text:#13241b;--soft:#5d7167;--accent:#0f8f5c}
-  @media (prefers-color-scheme: dark){:root{--bg:#0b1310;--text:#e6f1eb;--soft:#8ea69a;--accent:#3cc58a}}
-  body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--bg);color:var(--text);font-family:-apple-system,"Segoe UI",Arial,sans-serif;text-align:center;padding:24px;box-sizing:border-box}
-  img{width:88px;height:88px;border-radius:24%;box-shadow:0 14px 30px -14px rgba(11,110,71,.6)}
-  h1{margin:16px 0 4px;font-size:1.6rem;direction:ltr}
-  p{margin:0 0 18px;color:var(--soft)}
-  a{color:var(--accent);font-weight:600}
+  :root{--bg:#f2f7f4;--text:#13241b;--soft:#5d7167;--dark:#0b5c3f;--accent:#12a86b;--gold:#f2b134;--glow:rgba(15,143,92,.22)}
+  @media (prefers-color-scheme: dark){:root{--bg:#0b1310;--text:#e6f1eb;--soft:#8ea69a;--dark:#e9f3ee;--accent:#3ccf8e;--glow:rgba(60,197,138,.25)}}
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:var(--bg);color:var(--text);font-family:"Heebo",-apple-system,"Segoe UI",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+  body{display:flex;align-items:center;justify-content:center;padding:24px;overflow:hidden}
+  body::before{content:"";position:fixed;inset:8% 0 auto 0;height:80%;background:radial-gradient(ellipse closest-side,var(--glow),transparent);pointer-events:none;animation:fade 1.2s ease both}
+  main{position:relative;text-align:center}
+  .logo{width:112px;height:112px;border-radius:24%;box-shadow:0 20px 50px -20px rgba(11,110,71,.55);animation:pop .9s cubic-bezier(.34,1.56,.64,1) both, float 4s ease-in-out 1.2s infinite}
+  h1{direction:ltr;margin:18px 0 8px;font-size:2.5rem;font-weight:800;letter-spacing:-.03em;line-height:1}
+  h1 span{display:inline-block;animation:up .55s cubic-bezier(.34,1.56,.64,1) both}
+  .d{color:var(--dark)} .a{color:var(--accent)}
+  .slogan{direction:ltr;margin:0;font-size:1.05rem;font-weight:600;animation:up .7s ease .8s both}
+  .slogan b{font-weight:800;background:linear-gradient(100deg,#0b6e47,#12a86b 30%,var(--gold) 50%,#12a86b 70%,#0b6e47);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 2.2s ease-in-out 1s infinite}
+  .dots{display:flex;gap:7px;justify-content:center;margin:28px 0 0;animation:fade .6s ease 1s both}
+  .dots i{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:dot 1.2s ease-in-out infinite}
+  .dots i:nth-child(2){animation-delay:.15s} .dots i:nth-child(3){animation-delay:.3s}
+  .fallback{display:block;margin-top:22px;font-size:.85rem;color:var(--soft);opacity:0;animation:fade .6s ease 6s forwards}
+  .fallback a{color:var(--accent);font-weight:700}
+  @keyframes pop{0%{opacity:0;transform:scale(.3) rotate(-14deg)}100%{opacity:1;transform:none}}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+  @keyframes up{0%{opacity:0;transform:translateY(14px)}100%{opacity:1;transform:none}}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  @keyframes shine{0%{background-position:100% 0}60%,100%{background-position:0 0}}
+  @keyframes dot{0%,100%{transform:scale(.6);opacity:.4}50%{transform:scale(1);opacity:1}}
+  @media (prefers-reduced-motion: reduce){*{animation-duration:.01ms !important;animation-iteration-count:1 !important}}
 </style>
 </head>
 <body>
   <main>
-    <img src="icon.png" alt="">
-    <h1>GuitApp</h1>
-    <p>מעביר אותך לאפליקציה…</p>
-    <a id="go" href="https://guitapp.tail41ed80.ts.net/">לחצו כאן אם לא עברתם אוטומטית</a>
+    <img class="logo" src="icon.png" alt="">
+    <h1 aria-label="GuitApp"><span class="d" style="animation-delay:.35s">Guit</span><span class="a" style="animation-delay:.5s">App</span></h1>
+    <p class="slogan">Que la <b>guita</b> no se te escape.</p>
+    <div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
+    <!-- מופיע רק אם ההעברה לוקחת הרבה זמן -->
+    <span class="fallback">לא עבר? <a id="go" href="https://guitapp.tail41ed80.ts.net/">לחצו כאן</a></span>
   </main>
   <script>
     var TARGET = 'https://guitapp.tail41ed80.ts.net/';
